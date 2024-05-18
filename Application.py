@@ -5,11 +5,11 @@ from keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
 
 # Load the trained model
-model_path = '/content/drive/MyDrive/Final_Model_Emtech/water_consumption_lstm_model.h5'
+model_path = 'water_consumption_lstm_model.h5'
 model = load_model(model_path)
 
 # Load your dataset for reference
-df = pd.read_csv('/content/drive/MyDrive/Final_Model_Emtech/water_consumption.csv')
+df = pd.read_csv('water_consumption.csv')
 
 # Fit the scaler on your training data
 scaler = MinMaxScaler(feature_range=(0, 1))
