@@ -46,7 +46,7 @@ def main():
         <style>
             body {
                 background-color: skyblue;
-                background-image: url('https://www.transparenttextures.com/patterns/water.png');
+                background-image: ('blue.jpg');
                 font-family: 'Serif';
             }
             .serif-font {
