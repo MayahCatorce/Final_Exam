@@ -41,10 +41,24 @@ def predict_30_days(model, initial_consumption):
 
 # Streamlit app
 def main():
-    st.write("Final Exam: Deployment in Cloud")
-    st.write("Name: Dhafny Buenafe and Mayah Catorce")
-    st.write("Section: CPE32S3")
-    st.write("Instructor: Engr. Roman Richard")
+    # Custom CSS to style the background and text
+    st.markdown("""
+        <style>
+            body {
+                background-color: skyblue;
+                background-image: url('https://www.transparenttextures.com/patterns/water.png');
+                font-family: 'Serif';
+            }
+            .serif-font {
+                font-family: 'Serif';
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<div class='serif-font'>Final Exam: Deployment in Cloud</div>", unsafe_allow_html=True)
+    st.markdown("<div class='serif-font'>Name: Dhafny Buenafe and Mayah Catorce</div>", unsafe_allow_html=True)
+    st.markdown("<div class='serif-font'>Section: CPE32S3</div>", unsafe_allow_html=True)
+    st.markdown("<div class='serif-font'>Instructor: Engr. Roman Richard</div>", unsafe_allow_html=True)
 
     st.title('Consumption Prediction App')
 
@@ -72,8 +86,12 @@ def main():
         daily_prices = [1.48 * consumption for consumption in daily_consumptions]
 
         st.write("### 30-Day Predictions")
-        for day in range(30):
-            st.write(f"Day {day + 1}: Consumption = {daily_consumptions[day]:.2f} cubic meters, Price = {daily_prices[day]:.2f} Php")
+        df = pd.DataFrame({
+            'Day': [f"Day {i+1}" for i in range(30)],
+            'Consumption (cubic meters)': daily_consumptions,
+            'Price (Php)': daily_prices
+        })
+        st.table(df)
 
         # Calculate monthly totals
         total_consumption = np.sum(daily_consumptions)
