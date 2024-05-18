@@ -61,10 +61,10 @@ def main():
         </style>
     """, unsafe_allow_html=True)
 
-    st.markdown("<div class='serif-font'> ### Final Exam: Deployment in Cloud</div>", unsafe_allow_html=True)
-    st.markdown("<div class='serif-font'> ### Name: Dhafny Buenafe and Mayah Catorce</div>", unsafe_allow_html=True)
-    st.markdown("<div class='serif-font'> ### Section: CPE32S3</div>", unsafe_allow_html=True)
-    st.markdown("<div class='serif-font'> ### Instructor: Engr. Roman Richard</div>", unsafe_allow_html=True)
+    st.markdown("<div class='serif-font'> Final Exam: Deployment in Cloud</div>", unsafe_allow_html=True)
+    st.markdown("<div class='serif-font'> Name: Dhafny Buenafe and Mayah Catorce</div>", unsafe_allow_html=True)
+    st.markdown("<div class='serif-font'> Section: CPE32S3</div>", unsafe_allow_html=True)
+    st.markdown("<div class='serif-font'> Instructor: Engr. Roman Richard</div>", unsafe_allow_html=True)
 
     st.title('Consumption Prediction App')
 
