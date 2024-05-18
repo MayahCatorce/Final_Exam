@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import tensorflow as tf
+import numpy as np
 
 # Function to load the pre-trained model
 def load_model():
@@ -9,9 +10,8 @@ def load_model():
 
 # Define function to make predictions
 def predict_consumption(model, previous_consumption):
-    # Ensure input is in the correct format and shape
-    input_data = pd.DataFrame({'previous_consumption': [previous_consumption]})
-    input_data = input_data.values.reshape((input_data.shape[0], 1, input_data.shape[1]))
+    # Pad or repeat the single timestep value to create a sequence of length 10
+    input_data = np.repeat(previous_consumption, 10).reshape((1, 10, 1))
 
     # Make prediction
     predicted_consumption = model.predict(input_data)
