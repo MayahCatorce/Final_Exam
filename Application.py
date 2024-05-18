@@ -45,12 +45,18 @@ def main():
     st.markdown("""
         <style>
             body {
-                background-color: skyblue;
-                background-image: ('blue.jpg');
+                background: url('blue.jpg') no-repeat center center fixed;
+                background-size: cover;
                 font-family: 'Serif';
             }
             .serif-font {
                 font-family: 'Serif';
+                font-size: 24px;
+                font-weight: bold;
+            }
+            .stApp {
+                background: url('blue.jpg');
+                background-size: cover;
             }
         </style>
     """, unsafe_allow_html=True)
