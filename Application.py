@@ -9,9 +9,12 @@ def load_model():
 
 # Define function to make predictions
 def predict_consumption(model, previous_consumption):
-    # Reshape input to match the model's input shape if necessary
-    previous_consumption = tf.expand_dims(previous_consumption, axis=0)
-    predicted_consumption = model.predict(previous_consumption)
+    # Ensure input is in the correct format and shape
+    input_data = pd.DataFrame({'previous_consumption': [previous_consumption]})
+    input_data = input_data.values.reshape((input_data.shape[0], 1, input_data.shape[1]))
+
+    # Make prediction
+    predicted_consumption = model.predict(input_data)
     return predicted_consumption[0][0]  # Assuming a scalar output
 
 # Streamlit app
