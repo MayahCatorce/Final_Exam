@@ -31,13 +31,15 @@ def main():
     st.title('Consumption Prediction App')
 
     # User input for previous consumption
-    previous_consumption = st.number_input('Enter your previous consumption:', value=0.0)
+    previous_consumption = st.number_input('Enter your previous consumption (cubic meters):', value=0.0)
 
     # Predict consumption
     if st.button('Predict Consumption'):
         # Make predictions
         predicted_consumption = predict_consumption(model, previous_consumption)
-        st.write('Predicted consumption:', predicted_consumption)
+        price = 14.8 * predicted_consumption  # Calculate price
+        st.write(f'Predicted consumption: {predicted_consumption} cubic meters')
+        st.write(f'Estimated price: ${price:.2f}')
 
 if __name__ == "__main__":
     main()
