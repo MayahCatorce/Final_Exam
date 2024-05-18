@@ -5,20 +5,32 @@ from keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
 
 # Load the trained model
-model_path = 'water_consumption_lstm_model.h5'
+model_path = '/content/drive/MyDrive/Final_Model_Emtech/water_consumption_lstm_model.h5'
 model = load_model(model_path)
 
+# Load your dataset for reference
+# Replace 'your_dataset.csv' with the path to your dataset
+df = pd.read_csv('/content/drive/MyDrive/Final_Model_Emtech/water_consumption.csv')
 
+# Fit the scaler on your training data
+scaler = MinMaxScaler(feature_range=(0, 1))
+scaler.fit(df)  # Assuming df contains your training data
+
+# Function to preprocess user input
 def preprocess_input(user_input, scaler):
+    # Perform any necessary preprocessing on the user input
+    # For example, convert the input into the appropriate format
+    
+    # In this example, assuming user_input is a DataFrame with the same features as your original dataset
+    # You may need to adjust this based on your actual input
+    
+    # Normalize the user input using the fitted scaler
     scaled_input = scaler.transform(user_input)
+    
     return scaled_input
 
 def main():
     st.title("Water Consumption Prediction")
-
-    # Load your dataset for reference
-    # Replace 'your_dataset.csv' with the path to your dataset
-    df = pd.read_csv('water_consumption.csv')
 
     # Assuming 'Date' is one of the columns for user input
     user_input_date = st.date_input("Select a date:", value=pd.to_datetime('today'))
@@ -27,7 +39,6 @@ def main():
 
     # Preprocess the user input
     user_input = pd.DataFrame({'Date': [user_input_date]})
-    scaler = MinMaxScaler(feature_range=(0, 1))  # Use the same scaler as used during training
     scaled_input = preprocess_input(user_input, scaler)
 
     # Predict water consumption
